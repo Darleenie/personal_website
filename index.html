@@ -98,6 +98,79 @@ nav.solid{
 }
 .nav-links a:hover{color:#fff}
 
+/* ─── HAMBURGER BUTTON ───────────────────────────────────────── */
+#menu-btn{
+  display:none;
+  flex-direction:column;justify-content:center;align-items:center;
+  width:40px;height:40px;gap:5px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:8px;
+  cursor:pointer;
+  transition:background .2s,border-color .2s;
+  position:relative;z-index:1100;
+}
+#menu-btn:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2)}
+.bar{
+  width:18px;height:1.5px;
+  background:#fff;border-radius:2px;
+  transition:transform .35s var(--ease-out),opacity .25s,width .3s;
+  transform-origin:center;
+}
+#menu-btn.open .bar:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+#menu-btn.open .bar:nth-child(2){opacity:0;width:0}
+#menu-btn.open .bar:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+/* ─── MOBILE MENU OVERLAY ────────────────────────────────────── */
+#mobile-menu{
+  position:fixed;inset:0;z-index:1050;
+  background:rgba(7,9,15,.97);
+  backdrop-filter:blur(24px);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:0;
+  opacity:0;pointer-events:none;
+  transition:opacity .35s var(--ease-out);
+}
+#mobile-menu.open{opacity:1;pointer-events:all}
+
+.mob-link{
+  font-family:var(--mono);
+  font-size:clamp(1.8rem,8vw,3rem);
+  font-weight:700;
+  color:rgba(255,255,255,.2);
+  letter-spacing:-.02em;
+  padding:.6rem 2rem;
+  text-decoration:none;
+  position:relative;
+  transition:color .25s,transform .25s;
+  transform:translateY(20px);opacity:0;
+  transition:color .25s,transform .4s var(--ease-out),opacity .4s var(--ease-out);
+}
+#mobile-menu.open .mob-link{transform:translateY(0);opacity:1}
+#mobile-menu.open .mob-link:nth-child(1){transition-delay:.05s}
+#mobile-menu.open .mob-link:nth-child(2){transition-delay:.1s}
+#mobile-menu.open .mob-link:nth-child(3){transition-delay:.15s}
+#mobile-menu.open .mob-link:nth-child(4){transition-delay:.2s}
+#mobile-menu.open .mob-link:nth-child(5){transition-delay:.25s}
+
+.mob-link:hover{color:#fff;transform:translateX(8px)}
+.mob-link:active{color:var(--cyan)}
+
+.mob-link .mob-num{
+  font-size:.55em;color:var(--cyan);
+  margin-right:.5rem;vertical-align:.12em;
+  font-weight:400;
+}
+
+.mob-footer{
+  position:absolute;bottom:3rem;
+  font-family:var(--mono);font-size:.65rem;
+  color:rgba(255,255,255,.15);letter-spacing:.15em;
+  opacity:0;transition:opacity .4s .3s;
+}
+#mobile-menu.open .mob-footer{opacity:1}
+
 /* ─── HERO ───────────────────────────────────────────────────── */
 #hero{
   position:relative;height:100vh;
@@ -590,6 +663,7 @@ nav.solid{
 @media(max-width:768px){
   nav{padding:1.1rem 1.5rem}
   .nav-links{display:none}
+  #menu-btn{display:flex}
   body{cursor:auto}
   #cur-dot,#cur-ring{display:none}
   .hero-name{font-size:clamp(3rem,12vw,5rem)}
@@ -609,6 +683,16 @@ nav.solid{
 <div id="cur-dot"></div>
 <div id="cur-ring"></div>
 
+<!-- MOBILE MENU OVERLAY -->
+<div id="mobile-menu" role="dialog" aria-label="Navigation menu">
+  <a href="#about"      class="mob-link"><span class="mob-num">01</span>About</a>
+  <a href="#experience" class="mob-link"><span class="mob-num">02</span>Experience</a>
+  <a href="#skills"     class="mob-link"><span class="mob-num">03</span>Skills</a>
+  <a href="#projects"   class="mob-link"><span class="mob-num">04</span>Projects</a>
+  <a href="#contact"    class="mob-link"><span class="mob-num">05</span>Contact</a>
+  <div class="mob-footer">DANLIN JIANG &nbsp;·&nbsp; FIRMWARE ENGINEER</div>
+</div>
+
 <!-- NAV -->
 <nav id="nav">
   <a href="#hero" class="nav-logo"><img src="icon.png" alt="Danlin Jiang" /></a>
@@ -619,6 +703,11 @@ nav.solid{
     <li><a href="#projects">Projects</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <button id="menu-btn" aria-label="Toggle menu" aria-expanded="false">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
 </nav>
 
 <!-- ══════════════════════════════════════════════
@@ -1326,6 +1415,33 @@ window.addEventListener('scroll', () => nav.classList.toggle('solid', scrollY > 
   document.querySelectorAll('.xp-details').forEach(d => {
     d.style.maxHeight = 'none';
     d.style.opacity = '1';
+  });
+})();
+
+/* ─── MOBILE MENU ────────────────────────────────────── */
+(function initMobileMenu() {
+  const btn   = document.getElementById('menu-btn');
+  const menu  = document.getElementById('mobile-menu');
+  let isOpen  = false;
+
+  function toggle(force) {
+    isOpen = (force !== undefined) ? force : !isOpen;
+    btn.classList.toggle('open', isOpen);
+    menu.classList.toggle('open', isOpen);
+    btn.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  }
+
+  btn.addEventListener('click', () => toggle());
+
+  // Close when any menu link is tapped
+  menu.querySelectorAll('.mob-link').forEach(link => {
+    link.addEventListener('click', () => toggle(false));
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && isOpen) toggle(false);
   });
 })();
 
