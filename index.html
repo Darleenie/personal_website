@@ -446,16 +446,12 @@ nav{
 .artwork-piece img{width:100%;height:auto;border-radius:19px;background:#fff}
 .artwork-piece figcaption{padding:1rem 0;font-size:.9rem;line-height:1.6;color:var(--body-gray)}
 .artwork-piece figcaption strong{display:block;color:var(--deep-charcoal);font-weight:500}
-.artwork-coming-soon{
-  grid-column:1/-1;min-height:300px;padding:3rem;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
-  border:1px solid #dce2e9;border-radius:24px;background:#fff;
-}
-.artwork-frame{width:56px;height:64px;border:1px solid #c7d0db;border-radius:6px;padding:8px;margin-bottom:1.5rem}
-.artwork-frame::after{content:'';display:block;width:100%;height:100%;border:1px solid #c7d0db;border-radius:2px}
-.artwork-coming-soon h3{font-size:1.5rem;font-weight:300;color:var(--deep-charcoal);margin-bottom:.75rem}
-.artwork-coming-soon p{max-width:360px;font-size:.95rem;line-height:1.75;color:var(--body-gray)}
-.artwork-note{margin-top:1.25rem;font-size:.8rem;color:var(--body-gray)}
+.artwork-preview{grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem}
+.artwork-preview a{display:block;border-radius:19px;overflow:hidden;background:#fff}
+.artwork-preview img{width:100%;aspect-ratio:4/5;object-fit:contain;transition:transform .3s}
+.artwork-preview a:hover img{transform:scale(1.03)}
+.artwork-preview a:focus-visible{outline:3px solid var(--ps-blue);outline-offset:5px}
+.artwork-cta{margin-top:2rem;text-align:center}
 
 /* ─── CREATIVE PIVOT ─────────────────────────────────────────── */
 #pivot{
@@ -606,7 +602,6 @@ nav{
   nav{padding:1rem 1.5rem}
   #about,#experience,#skills,#projects,#artwork,#pivot,#education,#contact{padding:5rem 0}
   .artwork-gallery{grid-template-columns:1fr}
-  .artwork-coming-soon{min-height:260px;padding:2rem 1.5rem}
 }
 
   </style>
@@ -997,7 +992,7 @@ nav{
   </div>
 </section>
 
-<!-- ARTWORK: Replace the coming-soon panel with artwork-piece figures when images are supplied. -->
+<!-- ARTWORK PREVIEW -->
 <section id="artwork" aria-labelledby="artwork-title">
   <div class="container">
     <div class="artwork-heading sr">
@@ -1008,16 +1003,27 @@ nav{
       <p class="artwork-intro">A space for my artwork, personal explorations, and ideas that take shape
         beyond the screen and the circuit board.</p>
     </div>
-    <div class="artwork-gallery sr">
-      <!-- For each piece, add a figure.artwork-piece with a lazy-loaded image,
-           descriptive alt text, and a figcaption containing its title and medium. -->
-      <div class="artwork-coming-soon">
-        <div class="artwork-frame" aria-hidden="true"></div>
-        <h3>Artwork coming soon</h3>
-        <p>I'm putting together a selection of my creative work. Check back for the first pieces.</p>
-      </div>
+    <div class="artwork-gallery artwork-preview sr">
+      <figure class="artwork-piece">
+        <a href="artwork.html#work-02" aria-label="View portrait in pink and blue in the full gallery">
+          <img src="artwork/IMG_0579.jpg" alt="A painted portrait of a person with glasses and a blue jacket against a pink background" width="1080" height="1440" loading="lazy" decoding="async" />
+        </a>
+        <figcaption>Portrait in pink and blue</figcaption>
+      </figure>
+      <figure class="artwork-piece">
+        <a href="artwork.html#work-06" aria-label="View portrait against violet in the full gallery">
+          <img src="artwork/IMG_2402.jpg" alt="A painted portrait of a child in a patterned white shirt against a violet background" width="2939" height="3919" loading="lazy" decoding="async" />
+        </a>
+        <figcaption>Portrait against violet</figcaption>
+      </figure>
+      <figure class="artwork-piece">
+        <a href="artwork.html#work-14" aria-label="View sea lion and otter in the full gallery">
+          <img src="artwork/Untitled_Artwork%203.jpg" alt="An illustration of a dark sea lion facing a small brown otter" width="2236" height="1327" loading="lazy" decoding="async" />
+        </a>
+        <figcaption>Sea lion and otter</figcaption>
+      </figure>
     </div>
-    <p class="artwork-note">Engineering, design, and art — connected by curiosity.</p>
+    <div class="artwork-cta"><a class="btn-primary" href="artwork.html">View all artwork <span aria-hidden="true">&rarr;</span></a></div>
   </div>
 </section>
 

@@ -1,0 +1,49 @@
+*{box-sizing:border-box;margin:0;padding:0}
+:root{font-family:'Barlow',Arial,sans-serif;color:#1f1f1f;background:#f5f7fa;font-synthesis:none}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+a:focus-visible,button:focus-visible{outline:3px solid #0070cc;outline-offset:5px}
+.skip-link{position:fixed;top:-100px;left:20px;z-index:5;padding:12px;background:#fff}
+.skip-link:focus{top:10px}
+.site-header{background:#000;color:#fff;position:sticky;top:0;z-index:2}
+nav{max-width:1400px;margin:auto;padding:20px 48px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo img{display:block;filter:brightness(0) invert(1)}
+.nav-links{display:flex;gap:32px;font-size:.9rem;font-weight:500}
+.nav-links a{padding:8px 0;color:#ccc}
+.nav-links a:hover,.nav-links [aria-current]{color:#fff}
+.nav-links [aria-current]{border-bottom:2px solid #0070cc}
+.container{max-width:1280px;margin:auto;padding:0 48px}
+.gallery-intro{padding:88px 0 52px}
+.eyebrow{font-size:.9rem;color:#6b6b6b;margin-bottom:24px}
+h1{font-size:clamp(2.8rem,6vw,5rem);font-weight:300;line-height:1.1;letter-spacing:-1px}
+.intro-bottom{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-top:32px}
+.intro-bottom p{max-width:520px;font-size:1.1rem;line-height:1.8;color:#626262}
+.collection-count{font-size:.8rem;color:#6b6b6b;white-space:nowrap;padding-bottom:6px}
+.gallery{columns:3;column-gap:28px;border-top:1px solid #dce2e9;padding-top:36px}
+.work{break-inside:avoid;margin-bottom:32px;scroll-margin-top:100px}
+.work a{display:block;position:relative;background:#fff;border-radius:12px;overflow:hidden}
+.work img{display:block;width:100%;height:auto}
+.enlarge{position:absolute;bottom:12px;right:12px;background:#fff;color:#1f1f1f;padding:8px 14px;border-radius:999px;font-size:.8rem;opacity:0;transition:opacity .2s}
+.work a:hover .enlarge,.work a:focus-visible .enlarge{opacity:1}
+figcaption{display:flex;justify-content:space-between;gap:16px;padding:14px 2px;font-size:.9rem;line-height:1.5}
+.work-number{color:#767676;font-size:.75rem}
+.gallery-outro{text-align:center;padding:64px 0 88px}
+h2{font-size:clamp(1.7rem,3vw,2.5rem);font-weight:300;margin-bottom:24px}
+.button{display:inline-block;padding:14px 28px;background:#0070cc;color:#fff;border-radius:999px;font-weight:500;transition:background .2s}
+.button:hover{background:#005aa4}
+footer{background:#000;color:#bcbcbc;display:flex;justify-content:space-between;gap:24px;padding:32px 48px;font-size:.8rem}
+dialog{position:fixed;inset:0;margin:auto;width:calc(100% - 48px);max-width:1400px;height:calc(100dvh - 48px);max-height:none;border:1px solid #444;border-radius:16px;background:#121314;color:#fff;padding:20px 24px}
+dialog::backdrop{background:rgba(0,0,0,.88)}
+dialog[open]{display:flex;flex-direction:column}
+.viewer-toolbar,.viewer-bottom{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-shrink:0;font-size:.9rem}
+.viewer-toolbar{padding-bottom:16px;color:#bbb}
+dialog button{border:1px solid #666;border-radius:999px;background:transparent;color:#fff;padding:10px 16px;min-height:44px}
+dialog button:hover{background:#333}
+.viewer-image{flex:1;min-height:0;display:flex;align-items:center;justify-content:center}
+.viewer-image img{display:block;max-width:100%;max-height:100%;object-fit:contain}
+.viewer-bottom{padding-top:16px}
+#viewer-caption{text-align:center}
+@media(max-width:1000px){.gallery{columns:2}.intro-bottom{align-items:start;flex-direction:column;gap:20px}}
+@media(max-width:600px){nav{padding:16px 20px}.nav-links{gap:18px;font-size:.8rem}.container{padding:0 20px}.gallery-intro{padding:56px 0 32px}.gallery{columns:1;padding-top:24px}.work{margin-bottom:20px}footer{padding:28px 20px;flex-direction:column}dialog{width:calc(100% - 16px);height:calc(100dvh - 16px);padding:16px 12px}.viewer-bottom{flex-wrap:wrap;gap:12px}#viewer-caption{order:-1;width:100%}.viewer-toolbar{gap:12px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
