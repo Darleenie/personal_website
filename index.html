@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Danlin Jiang — Firmware Engineer</title>
+  <title>Danlin Jiang — Engineering, Design &amp; Art</title>
+  <meta name="description" content="Danlin Jiang — firmware engineer in San Diego, exploring embedded systems, interactive design, and art. Discover my engineering projects and creative work." />
   <link rel="icon" type="image/png" href="icon.png" />
   <link rel="apple-touch-icon" href="icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -159,6 +160,7 @@ nav{
 #mobile-menu.open .mob-link:nth-child(3){transition-delay:.15s}
 #mobile-menu.open .mob-link:nth-child(4){transition-delay:.2s}
 #mobile-menu.open .mob-link:nth-child(5){transition-delay:.25s}
+#mobile-menu.open .mob-link:nth-child(6){transition-delay:.3s}
 .mob-link:hover{color:#ffffff}
 .mob-footer{
   position:absolute;bottom:3rem;
@@ -434,6 +436,27 @@ nav{
 }
 .proj-date{font-size:.75rem;font-weight:400;color:rgba(255,255,255,.3)}
 
+/* ─── ARTWORK ────────────────────────────────────────────────── */
+#artwork{padding:8rem 0;background:var(--ice-mist);scroll-margin-top:80px}
+.artwork-heading{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:end;margin-bottom:3rem}
+.artwork-heading .section-title{margin-bottom:0}
+.artwork-intro{font-size:1.05rem;line-height:1.85;color:var(--body-gray);max-width:480px}
+.artwork-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem}
+.artwork-piece{margin:0;min-width:0}
+.artwork-piece img{width:100%;height:auto;border-radius:19px;background:#fff}
+.artwork-piece figcaption{padding:1rem 0;font-size:.9rem;line-height:1.6;color:var(--body-gray)}
+.artwork-piece figcaption strong{display:block;color:var(--deep-charcoal);font-weight:500}
+.artwork-coming-soon{
+  grid-column:1/-1;min-height:300px;padding:3rem;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  border:1px solid #dce2e9;border-radius:24px;background:#fff;
+}
+.artwork-frame{width:56px;height:64px;border:1px solid #c7d0db;border-radius:6px;padding:8px;margin-bottom:1.5rem}
+.artwork-frame::after{content:'';display:block;width:100%;height:100%;border:1px solid #c7d0db;border-radius:2px}
+.artwork-coming-soon h3{font-size:1.5rem;font-weight:300;color:var(--deep-charcoal);margin-bottom:.75rem}
+.artwork-coming-soon p{max-width:360px;font-size:.95rem;line-height:1.75;color:var(--body-gray)}
+.artwork-note{margin-top:1.25rem;font-size:.8rem;color:var(--body-gray)}
+
 /* ─── CREATIVE PIVOT ─────────────────────────────────────────── */
 #pivot{
   position:relative;padding:10rem 0;
@@ -566,6 +589,7 @@ nav{
 /* ─── RESPONSIVE ─────────────────────────────────────────────── */
 @media(max-width:900px){
   .about-grid{grid-template-columns:1fr;gap:4rem}
+  .artwork-heading{grid-template-columns:1fr;gap:1.25rem}
   .proj-item{grid-template-columns:1fr}
   .proj-visual{min-height:140px}
 }
@@ -580,7 +604,9 @@ nav{
   .btn-primary:hover,.btn-ghost:hover,.stag:hover,.itag:hover,.clink:hover{transform:scale(1.05)}
   .container{padding:0 1.5rem}
   nav{padding:1rem 1.5rem}
-  #about,#experience,#skills,#projects,#pivot,#education,#contact{padding:5rem 0}
+  #about,#experience,#skills,#projects,#artwork,#pivot,#education,#contact{padding:5rem 0}
+  .artwork-gallery{grid-template-columns:1fr}
+  .artwork-coming-soon{min-height:260px;padding:2rem 1.5rem}
 }
 
   </style>
@@ -596,6 +622,7 @@ nav{
   <a href="#experience" class="mob-link">Experience</a>
   <a href="#skills"     class="mob-link">Skills</a>
   <a href="#projects"   class="mob-link">Projects</a>
+  <a href="#artwork"    class="mob-link">Artwork</a>
   <a href="#contact"    class="mob-link">Contact</a>
   <div class="mob-footer">Danlin Jiang &nbsp;·&nbsp; Firmware Engineer</div>
 </div>
@@ -608,6 +635,7 @@ nav{
     <li><a href="#experience">Experience</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#artwork">Artwork</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <button id="menu-btn" aria-label="Toggle menu" aria-expanded="false">
@@ -624,14 +652,15 @@ nav{
   <div class="hero-inner">
     <div class="hero-tag">
       <div class="hero-tag-dot"></div>
-      Firmware Engineer &amp; Creative Technologist
+      Firmware Engineer &amp; Art Maker
     </div>
     <h1 class="hero-name">
       <span class="letter" style="--i:0">D</span><span class="letter" style="--i:1">A</span><span class="letter" style="--i:2">N</span><span class="letter" style="--i:3">L</span><span class="letter" style="--i:4">I</span><span class="letter" style="--i:5">N</span><span class="gap"></span><span class="letter" style="--i:7">J</span><span class="letter" style="--i:8">I</span><span class="letter" style="--i:9">A</span><span class="letter" style="--i:10">N</span><span class="letter" style="--i:11">G</span>
     </h1>
     <div class="hero-sub" id="tw-el"></div>
     <div class="hero-ctas">
-      <a href="#experience" class="btn-primary">View My Work</a>
+      <a href="#projects" class="btn-primary">Explore My Projects</a>
+      <a href="#artwork" class="btn-ghost" style="color:rgba(255,255,255,.85);border:2px solid rgba(255,255,255,.35);">Art &amp; Creative Work</a>
       <a href="#contact" class="btn-ghost" style="color:rgba(255,255,255,.85);border:2px solid rgba(255,255,255,.35);">Get In Touch</a>
     </div>
   </div>
@@ -663,13 +692,15 @@ nav{
     <div class="about-grid">
       <div class="about-body sr-left">
         <div class="section-label">About me</div>
-        <h2 class="section-title on-white">Building hardware&#8209;software bridges</h2>
+        <h2 class="section-title on-white">An engineer's mind.<br>A creative eye.</h2>
         <p>I'm a <strong>Firmware Engineer</strong> at RF&#8209;LAMBDA, where I develop embedded systems integrating
           <span class="hl">Intel x86 IPCs, FPGAs, and ARM Cortex&#8209;M microcontrollers</span> into real-time test equipment.</p>
-        <p>UCSD graduate with an <strong>MS in Computer Engineering</strong> and a minor in
-          <strong>Interactive Design</strong> — because good hardware deserves equally good UX.</p>
-        <p>I love the full stack: from bare-metal drivers and PCIe interfaces all the way to Qt desktop apps
-          and CI/CD workflows.</p>
+        <p>With an <strong>MS in Computer Engineering</strong> and a minor in
+          <strong>Interactive Design</strong> from UCSD, I enjoy connecting the details of how things work
+          with how people experience them — from bare-metal drivers to Qt desktop apps.</p>
+        <p>Art is another part of how I create. Away from code and circuits, I make room for
+          <span class="hl">visual expression and experimentation</span>. This site brings my engineering
+          projects and artwork together, sharing both sides of what I love to make.</p>
       </div>
       <div class="stats-grid sr-right">
         <div class="stat-block">
@@ -947,12 +978,13 @@ nav{
     <div class="pivot-inner sr">
       <div class="pivot-eyebrow">Beyond firmware</div>
       <h2 class="pivot-h">
-        I engineer systems.<br>I also craft experiences.
+        Curiosity, in more than one medium.
       </h2>
       <p class="pivot-sub">
-        Beyond firmware and silicon, I studied <em>Interactive Design</em> — user experience research,
-        interface design, and human-computer interaction.
-        I believe the best technology is both <em>technically precise</em> and <em>beautiful to use</em>.
+        Engineering, design, and art give me different ways to explore an idea.
+        My background in <em>Interactive Design</em> connects those interests through user experience,
+        visual thinking, and attention to detail. I care about what I make — how it works,
+        how it looks, and <em>how it feels to experience</em>.
       </p>
       <div class="itags">
         <span class="itag">UX Research</span>
@@ -962,6 +994,30 @@ nav{
         <span class="itag">Creative Technology</span>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ARTWORK: Replace the coming-soon panel with artwork-piece figures when images are supplied. -->
+<section id="artwork" aria-labelledby="artwork-title">
+  <div class="container">
+    <div class="artwork-heading sr">
+      <div>
+        <div class="section-label">Art &amp; creative work</div>
+        <h2 id="artwork-title" class="section-title on-white">A different side of what I make.</h2>
+      </div>
+      <p class="artwork-intro">A space for my artwork, personal explorations, and ideas that take shape
+        beyond the screen and the circuit board.</p>
+    </div>
+    <div class="artwork-gallery sr">
+      <!-- For each piece, add a figure.artwork-piece with a lazy-loaded image,
+           descriptive alt text, and a figcaption containing its title and medium. -->
+      <div class="artwork-coming-soon">
+        <div class="artwork-frame" aria-hidden="true"></div>
+        <h3>Artwork coming soon</h3>
+        <p>I'm putting together a selection of my creative work. Check back for the first pieces.</p>
+      </div>
+    </div>
+    <p class="artwork-note">Engineering, design, and art — connected by curiosity.</p>
   </div>
 </section>
 
@@ -1004,7 +1060,7 @@ nav{
   <div class="container">
     <div class="sr">
       <h2 class="contact-title">Let's connect</h2>
-      <p class="contact-sub">Whether you're building something ambitious in embedded systems or just want to talk — I'd love to hear from you.</p>
+      <p class="contact-sub">Have an engineering project in mind, want to talk about art and design, or just say hello? I'd love to hear from you.</p>
       <div class="contact-links">
         <a href="mailto:jiangdl0129@gmail.com" class="clink email">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
@@ -1023,7 +1079,7 @@ nav{
           (858) 531&#8209;9875
         </a>
       </div>
-      <div class="footer-sig">Danlin Jiang &nbsp;·&nbsp; Firmware Engineer &nbsp;·&nbsp; San Diego, CA</div>
+      <div class="footer-sig">Danlin Jiang &nbsp;·&nbsp; Engineering, Design &amp; Art &nbsp;·&nbsp; San Diego, CA</div>
     </div>
   </div>
 </section>
@@ -1060,6 +1116,7 @@ const phrases = [
   'FPGA & ARM Specialist',
   'Qt Application Developer',
   'Hardware-Software Integrator',
+  'Exploring Art & Design',
 ];
 const twEl = document.getElementById('tw-el');
 let pi = 0, ci = 0, deleting = false;
@@ -1080,12 +1137,12 @@ setTimeout(typeStep, 1500);
 const stmtWrap = document.getElementById('stmt-wrap');
 const stmtTextEl = document.getElementById('stmt-text');
 
-const rawStmt = "I build firmware that bridges hardware and software. I speak the language of microcontrollers and FPGAs just as fluently as Python and C++. Every byte counts. Every cycle matters.";
+const rawStmt = "I build firmware, explore design, and make art. From microcontrollers and FPGAs to visual ideas, I enjoy turning curiosity into something tangible. Precision shapes my engineering. Creativity keeps me exploring.";
 const words = rawStmt.split(' ');
 stmtTextEl.innerHTML = words.map((w, i) => {
   let cls = 'w';
-  if (w === 'firmware' || w === 'hardware' || w === 'software') cls += ' accent-w';
-  if (w === 'byte' || w === 'cycle') cls += ' acc2';
+  if (['firmware,', 'design,', 'art.'].includes(w)) cls += ' accent-w';
+  if (w === 'Precision' || w === 'Creativity') cls += ' acc2';
   return `<span class="${cls}" data-i="${i}">${w}</span> `;
 }).join('');
 
