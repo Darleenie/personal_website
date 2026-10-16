@@ -3,7 +3,6 @@
 const artworkLinks = Array.from(document.querySelectorAll('[data-artwork]'));
 const viewer = document.getElementById('artwork-viewer');
 const viewerImage = document.getElementById('viewer-image');
-const viewerCaption = document.getElementById('viewer-caption');
 const viewerCount = document.getElementById('viewer-count');
 let currentArtwork = 0;
 let previousOverflow = '';
@@ -13,7 +12,6 @@ function showArtwork(index) {
   const link = artworkLinks[currentArtwork];
   viewerImage.src = link.href;
   viewerImage.alt = link.querySelector('img').alt;
-  viewerCaption.textContent = link.closest('figure').querySelector('figcaption span').textContent;
   viewerCount.textContent = `${currentArtwork + 1} / ${artworkLinks.length}`;
 }
 
